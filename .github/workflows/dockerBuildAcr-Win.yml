@@ -22,5 +22,5 @@ jobs:
           username: frank15ortiz
           password: ${{ secrets.REGISTRY_PASSWORD }}
       - run: |
-          docker build --build-arg RUNNER_VERSION=${{ env.RUNNER_VERSION }} -t ${{ secrets.REGISTRY_LOGIN_SERVER }}/pwd9000-github-runner-win:${{ env.RUNNER_VERSION }} .
-          docker push ${{ secrets.REGISTRY_LOGIN_SERVER }}/pwd9000-github-runner-win:${{ env.RUNNER_VERSION }}
+          docker build --build-arg RUNNER_VERSION=${{ env.RUNNER_VERSION }} -t ${{ secrets.REGISTRY_LOGIN_SERVER }}/frank15ortiz/windows-runners:${{ env.RUNNER_VERSION }} .
+          docker push ${{ secrets.REGISTRY_LOGIN_SERVER }}/frank15ortiz/windows-runners:${{ env.RUNNER_VERSION }}
