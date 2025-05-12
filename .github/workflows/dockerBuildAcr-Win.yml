@@ -22,5 +22,6 @@ jobs:
           username: frank15ortiz
           password: ${{ secrets.REGISTRY_PASSWORD }}
       - run: |
+          docker login docker.io -u frank15ortiz -p ${{ secrets.REGISTRY_PASSWORD }}
           docker build --build-arg RUNNER_VERSION=${{ env.RUNNER_VERSION }} -t frank15ortiz/windows-runners:${{ env.RUNNER_VERSION }} .
           docker push frank15ortiz/windows-runners:${{ env.RUNNER_VERSION }}
