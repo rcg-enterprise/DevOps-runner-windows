@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
 env:
-  RUNNER_VERSION: 2.293.0
+  RUNNER_VERSION: 2.323.0
 
 jobs:
   build-and-push:
@@ -14,16 +14,12 @@ jobs:
       - name: "Checkout GitHub Action"
         uses: actions/checkout@v4.2.2
 
-      - name: "Login via Azure CLI"
-        uses: azure/login@v2.2.0
-        with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
 
       - name: "Build and push image"
         uses: azure/docker-login@v2
         with:
-          login-server: ${{ secrets.REGISTRY_LOGIN_SERVER }}
-          username: ${{ secrets.REGISTRY_USERNAME }}
+          login-server: docker.io
+          username: frank15ortiz
           password: ${{ secrets.REGISTRY_PASSWORD }}
       - run: |
           docker build --build-arg RUNNER_VERSION=${{ env.RUNNER_VERSION }} -t ${{ secrets.REGISTRY_LOGIN_SERVER }}/pwd9000-github-runner-win:${{ env.RUNNER_VERSION }} .
